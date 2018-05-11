@@ -9,7 +9,7 @@ public class Platform : MonoBehaviour {
 
     }
     public Text gameEnd;
-    private int testing = 1;
+    private int testing =0;
     private float timeLeft = 5;
     public Text timeText;
     //private Rigidbody rb;

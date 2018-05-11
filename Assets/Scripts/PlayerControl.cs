@@ -37,8 +37,8 @@ public class PlayerControl : MonoBehaviour
         //Vector3 movement= new Vector3 (moveHorizontal,0.0f, moveVertical);
         if (!(gameEnd.text == "RED WINS!" || gameEnd.text=="BLUE WINS!"))
         {
-            print("HUMAN SPEED: "+rb.velocity);
-            rb.AddForce(moveHorizontal, 0.0f, moveVertical);
+            //print("HUMAN SPEED: "+rb.velocity);
+            rb.AddForce(moveHorizontal, -5, moveVertical);
         }
         else
         {

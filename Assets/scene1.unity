@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeText: {fileID: 371701005}
+  SPEED: 25
   pointsText: {fileID: 1525915960}
   gameEnd: {fileID: 2110796298}
   gameOver: 0
@@ -668,7 +669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameEnd: {fileID: 2110796298}
   gameOver: 0
-  speed: 15
+  speed: 25
 --- !u!1 &841446404
 GameObject:
   m_ObjectHideFlags: 0

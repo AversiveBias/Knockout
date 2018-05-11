@@ -11,7 +11,9 @@ public class Player2Control : MonoBehaviour
     {
 
 
+
     }
+    public int SPEED = 25;          //default is 15
     public Text pointsText;
     public Text gameEnd;
     public bool gameOver=false;
@@ -102,40 +104,50 @@ public class Player2Control : MonoBehaviour
                             //print("AI SPEED: " + rb.velocity);
                             if (rb.position.x < 0)
                             {
-                                moveHorizontal = 15;
+                                moveHorizontal = SPEED;
                             }
                             else
                             {
-                                moveHorizontal = -15;
+                                moveHorizontal = -1*SPEED;
                             }
                             if (rb.position.z < 0)
                             {
-                                moveVertical = 15;
+                                moveVertical = SPEED;
                             }
                             else
                             {
-                                moveVertical = -15;
+                                moveVertical = -1*SPEED;
                             }
-                            rb.AddForce(moveHorizontal, 0.0f, moveVertical);
+                            rb.AddForce(moveHorizontal, -5, moveVertical);
                         }
                         else //if he is closer to center, make him play aggro
                         {
-                            print("HUNTING");
+                            //print("HUNTING");
                             if (false)
                             {
                                 xVelocity = humanPlayer.transform.position.x - prevX;
                                 yVelocity = humanPlayer.transform.position.y - prevY;
                                 humanVelocity = new Vector3(xVelocity, 0.0f, yVelocity);
                                 direction = humanVelocity - rb.position;
+                                normalizedDirection = Vector3.Normalize(direction) * 7;
+                                moveHorizontal = normalizedDirection.x;
+                                moveVertical = normalizedDirection.z;
+                                rb.AddForce(moveHorizontal, 0.0f, moveVertical);
                             }
                             else
                             {
-                                direction = humanPos - rb.position;
+                                direction = 2*humanPos/3 - rb.position;
+
+                                normalizedDirection = Vector3.Normalize(direction);
+                              
+                                normalizedDirection *= SPEED;
+                                print("Chasing like normal");
+                                
+                                moveHorizontal = normalizedDirection.x;
+                                moveVertical = normalizedDirection.z;
+                                rb.AddForce(moveHorizontal, -5, moveVertical);
                             }
-                            normalizedDirection = Vector3.Normalize(direction)*7;
-                            moveHorizontal = normalizedDirection.x;
-                            moveVertical = normalizedDirection.z;
-                            rb.AddForce(moveHorizontal, 0.0f, moveVertical);
+                            
                            
                         }
                     }
