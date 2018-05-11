@@ -9,20 +9,26 @@ public class Platform : MonoBehaviour {
 
     }
     public Text gameEnd;
+    private int testing = 1;
     private float timeLeft = 5;
     public Text timeText;
     //private Rigidbody rb;
     public int count=0;
     private int xRotate, yRotate,zRotate;
-
+    private int rotationSpeed = 3;
     // Update is called once per frame
     void Update () {
-        xRotate = Random.Range(-2, 2);
-        yRotate = Random.Range(-2, 2);
-        zRotate = Random.Range(-2, 2);
-        transform.Rotate(xRotate*Time.deltaTime, 0, 0);
-        transform.Rotate(0, yRotate*Time.deltaTime, 0);
-        transform.Rotate(0, 0, zRotate*Time.deltaTime);
+        if (testing == 0)
+        {
+            xRotate = Random.Range(-1*rotationSpeed, rotationSpeed);
+            yRotate = Random.Range(-1*rotationSpeed, rotationSpeed);
+            zRotate = Random.Range(-1*rotationSpeed, rotationSpeed);
+            transform.Rotate(xRotate * Time.deltaTime, 0, 0);
+            transform.Rotate(0,yRotate * Time.deltaTime, 0);
+            transform.Rotate(0, 0,zRotate * Time.deltaTime);
+           
+        }
+     
         if (!(gameEnd.text == "RED WINS!" || gameEnd.text == "BLUE WINS!"))
         {
             timeLeft -= Time.deltaTime;
@@ -31,7 +37,7 @@ public class Platform : MonoBehaviour {
             timeText.text = "Time Left: " + timeLeft.ToString();
 
 
-            if (timeLeft <= 0)
+            if (testing==0 && timeLeft <= 0)
             {
                 timeLeft = 10;
                 transform.localScale *= .9f;
